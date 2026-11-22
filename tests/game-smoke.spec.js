@@ -1,10 +1,10 @@
 const { test, expect } = require('@playwright/test');
 
-test('Arabic game menu loads with all four worlds', async ({ page }) => {
+test('Arabic game menu loads with all five worlds', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle(/عالم فريدة/);
   await expect(page.getByRole('heading', { name: 'عالم فريدة' })).toBeVisible();
-  await expect(page.locator('[data-world]')).toHaveCount(4);
+  await expect(page.locator('[data-world]')).toHaveCount(5);
   await expect(page.locator('#gems')).toHaveText('0');
   await expect(page.locator('#stars')).toHaveText('0');
 });
