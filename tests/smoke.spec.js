@@ -58,3 +58,12 @@ test('learning garden switches between animals, shapes, colors and Arabic letter
     await expect(page.locator('#toast')).not.toBeEmpty();
   }
 });
+
+test('all five stages are selectable and unlocked', async ({ page }) => {
+  await expect(page.locator('#level')).toHaveText('المستوى 1/5');
+  await page.locator('#level').click();
+  await expect(page.locator('#level')).toHaveText('المستوى 2/5');
+  await page.locator('[data-world="forest"]').click();
+  await expect(page.locator('#controls')).toBeVisible();
+  await expect(page.locator('#level')).toHaveText('المستوى 2/5');
+});
