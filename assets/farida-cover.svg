@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+<title id="title">عالم فريدة</title><desc id="desc">غلاف ملون لمغامرة فريدة السحرية</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#32a8ee"/><stop offset=".58" stop-color="#9be9f4"/><stop offset="1" stop-color="#ffe1a0"/></linearGradient>
+ <linearGradient id="dress" x2="1" y2="1"><stop stop-color="#20c7c5"/><stop offset="1" stop-color="#087b9c"/></linearGradient>
+ <linearGradient id="hair" x2="1" y2="1"><stop stop-color="#63344b"/><stop offset="1" stop-color="#251b39"/></linearGradient>
+ <radialGradient id="gem"><stop stop-color="#fff"/><stop offset=".4" stop-color="#83ffff"/><stop offset="1" stop-color="#7164ff"/></radialGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="14"/></filter>
+</defs>
+<rect width="1024" height="1024" rx="150" fill="url(#sky)"/>
+<circle cx="160" cy="175" r="75" fill="#fff6be"/><path d="M0 570Q190 390 370 565T740 510T1100 540V1024H0Z" fill="#4bbd9a"/>
+<path d="M0 720Q220 580 420 720T820 680T1100 740V1024H0Z" fill="#198b7b"/>
+<path d="M665 345l95-190 95 190z" fill="#a98ae9"/><rect x="705" y="330" width="115" height="165" rx="18" fill="#f6c5f2"/><path d="M690 330h145l-73-92z" fill="#7655c9"/>
+<g fill="#fff" opacity=".9"><ellipse cx="290" cy="220" rx="110" ry="35"/><ellipse cx="350" cy="200" rx="65" ry="48"/><ellipse cx="830" cy="130" rx="105" ry="34"/></g>
+<g transform="translate(500 570)">
+ <ellipse cx="0" cy="360" rx="235" ry="42" fill="#173d64" opacity=".22" filter="url(#shadow)"/>
+ <path d="M-130 85Q-205 165-175 340L-140 425H145L185 340Q205 155 120 85Z" fill="url(#dress)" stroke="#fff" stroke-width="12"/>
+ <path d="M-125 100Q-5 175 130 100L100 220H-100Z" fill="#ff68a8"/>
+ <path d="M-160 160Q-270 230-230 345Q-210 405-145 365L-105 230" fill="url(#hair)"/>
+ <path d="M130 145Q260 210 225 340Q210 405 150 360L105 220" fill="url(#hair)"/>
+ <ellipse cy="-30" rx="155" ry="175" fill="#f6c4a5"/>
+ <path d="M-155-70Q-180-245 0-245Q180-235 160-45Q105-150 35-150Q-65-150-155-70Z" fill="url(#hair)"/>
+ <path d="M-150-80Q-185 20-120 90L-140 145Q-235 75-195-65Z" fill="url(#hair)"/>
+ <path d="M150-80Q185 20 120 90L140 145Q235 75 195-65Z" fill="url(#hair)"/>
+ <ellipse cx="-58" cy="-25" rx="25" ry="35" fill="#fff"/><ellipse cx="58" cy="-25" rx="25" ry="35" fill="#fff"/>
+ <ellipse cx="-53" cy="-22" rx="13" ry="22" fill="#5a392e"/><ellipse cx="53" cy="-22" rx="13" ry="22" fill="#5a392e"/>
+ <circle cx="-48" cy="-30" r="6" fill="#fff"/><circle cx="58" cy="-30" r="6" fill="#fff"/>
+ <path d="M-35 55Q0 88 38 53" fill="none" stroke="#b94e69" stroke-width="10" stroke-linecap="round"/>
+ <path d="M-125-115Q-40-215 60-155" fill="none" stroke="#ffd86c" stroke-width="23" stroke-linecap="round"/>
+ <path d="M-85-190l35-55 35 55-35 42z" fill="#ffd96a" stroke="#fff" stroke-width="9"/>
+ <path d="M110 105Q210 45 270-35" fill="none" stroke="#f6c4a5" stroke-width="42" stroke-linecap="round"/>
+ <circle cx="275" cy="-45" r="35" fill="#f6c4a5"/>
+ <path d="M275-45l-25-90 55 50z" fill="url(#gem)" stroke="#fff" stroke-width="8"/>
+</g>
+<g fill="#fff"><path d="M125 500l15 35 38 8-38 10-15 38-10-38-38-10 38-8z"/><path d="M850 540l12 28 30 8-30 8-12 30-8-30-30-8 30-8z"/></g>
+<g fill="#ff6fae"><circle cx="115" cy="820" r="22"/><circle cx="890" cy="820" r="28"/><circle cx="760" cy="900" r="18"/></g>
+<text x="512" y="945" text-anchor="middle" font-family="Tahoma,Arial,sans-serif" font-size="66" font-weight="900" fill="#fff" stroke="#874b9c" stroke-width="5" paint-order="stroke">عالم فريدة</text>
+</svg>
