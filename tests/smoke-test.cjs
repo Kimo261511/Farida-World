@@ -7,7 +7,7 @@ const gradle=fs.readFileSync(root+'/app/build.gradle','utf8');
 const checks=[
  ['Arabic right-to-left game shell',()=>assert.match(html,/<html lang="ar" dir="rtl">/)],
  ['Canvas-based 2D game engine',()=>{assert(html.includes("getContext('2d')"));assert(html.includes('function loop(now)'));assert(html.includes('function update(dt)'))}],
- ['Game JavaScript parses without syntax errors',()=>{const m=html.match(/<script>([\\s\\S]*?)<\\/script>/);assert(m);new vm.Script(m[1])}],
+ ['Game JavaScript parses without syntax errors',()=>{const js=html.slice(html.indexOf('<script>')+8,html.indexOf('</script>'));assert(js.length>0);new vm.Script(js)}],
  ['Three worlds and fifteen stages',()=>{['الغابة المضيئة','مملكة الرمال','جزر النجوم'].forEach(x=>assert(html.includes(x)));assert(html.includes('n<=unlocked'))}],
  ['Touch controls for movement, jump and attack',()=>['left','right','jump','hit'].forEach(x=>assert(html.includes('id="'+x+'"')))],
  ['Keyboard controls',()=>assert(html.includes('ArrowLeft')&&html.includes('keydown'))],
