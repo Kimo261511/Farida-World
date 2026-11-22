@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "prepare:web": "node scripts/prepare-web.js",
+    "build:android": "npm run prepare:web && npx cap sync android"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/android": "^7.4.3"
+  },
+  "dependencies": {
+    "@capacitor/core": "^7.4.3"
   }
 }
