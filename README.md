@@ -1,27 +1,29 @@
-# Farida World — عالم فريدة
+# عالم فريدة | Farida World
 
-A self-contained Arabic, mobile-first browser game prototype. Original code and original vector-style character artwork are included; no third-party game assets are copied.
+لعبة مغامرات عربية تعمل على الهاتف والكمبيوتر من المتصفح، مع تحكم باللمس ولوحة المفاتيح.
 
-## Run
-Open `index.html` in a modern browser. No build step or external network dependency is required.
+## تشغيل اللعبة
+افتح [نسخة GitHub Pages](https://kimo261511.github.io/Farida-World/) بعد تفعيل Pages من إعدادات المستودع، أو افتح `index.html` محليًا.
 
-## Current playable content
-- Four themed worlds: Enchanted Forest, Sea Kingdom, Sand Valley, and Cloud Islands.
-- Touch controls and keyboard controls.
-- Collectible stars and gems with local progress saving.
-- A tap-to-catch fish mini-game.
-- Original synthesized sound effects using Web Audio (starts after user interaction).
-- Responsive layout for phone screens.
+## الموجود حاليًا
+- أربعة عوالم: الغابة السحرية، مملكة البحار، وادي الرمال، وجزر السحاب.
+- حركة وقفز وجمع نجوم وبلورات، ولعبة صيد أسماك.
+- حفظ رصيد النجوم والبلورات محليًا على الجهاز.
+- مؤثرات صوتية مولّدة داخل اللعبة، مع زر لكتم الصوت.
+- واجهة عربية متجاوبة وأزرار لمس.
+- ملف تثبيت كتطبيق ويب (PWA) وذاكرة تخزين مؤقت للعمل دون اتصال بعد أول تحميل ناجح.
 
-## Honest status
-This is the first playable foundation, not a finished commercial release. The current scene art is drawn in Canvas and the character is a procedural 2D illustration. It does not yet contain professionally produced 3D models, recorded voice acting, a large authored level campaign, or a verified Android APK. Those require additional production and device testing. Do not treat this web build as an APK.
+## التثبيت على أندرويد
+انشر الموقع عبر HTTPS (مثل GitHub Pages)، افتحه في Chrome، ثم اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق» إذا ظهر الخيار.
 
-## Next production milestones
-1. Replace procedural placeholder art with a consistent original sprite/animation asset pack.
-2. Build authored levels, obstacles, enemy patterns, checkpoints, and boss encounters.
-3. Add original recorded music, voice lines, and polished sound design.
-4. Add automated browser tests and Android packaging, then test on real devices.
-5. Measure the final APK and include only real game assets; no padding files.
+## الحالة بوضوح
+هذه نسخة أولية قابلة للعب وليست إصدارًا تجاريًا نهائيًا. لم يُنشأ APK أصلي بعد، ولم تُجرَ اختبارات على أجهزة أندرويد فعلية. الرسوم الحالية مرسومة برمجيًا على Canvas، والمؤثرات الصوتية مولدة وليست موسيقى مسجلة. لا ندّعي وجود ملفات أصول ضخمة أو جودة إنتاج غير موجودة.
 
-## License
-All project code and original assets in this repository are newly authored for Farida World. Do not add ripped assets, music, characters, or levels from commercial games.
+## الخطوات التالية
+1. تصميم مراحل فعلية بعوائق ومنصات وأعداء ونقاط حفظ.
+2. إضافة رسوم متحركة وأصول أصلية عالية الجودة وموسيقى أصلية.
+3. إضافة اختبارات آلية وتحسين الأداء وإمكانية الوصول.
+4. تغليف نسخة Android واختبار APK على جهاز فعلي وقياس حجمه الحقيقي.
+
+## الترخيص
+الكود والرسوم الأصلية في هذا المشروع مخصصة لعالم فريدة. لا تستخدم ملفات أو شخصيات أو موسيقى مسروقة من ألعاب تجارية.
