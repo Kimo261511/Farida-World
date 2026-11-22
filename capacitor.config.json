@@ -1,0 +1,11 @@
+{
+  "appId": "com.faridaworld.game",
+  "appName": "عالم فريدة",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  }
+}
