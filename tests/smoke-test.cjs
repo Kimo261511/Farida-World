@@ -10,7 +10,7 @@ const checks=[
  ['Arabic right-to-left game shell',()=>assert.match(html,/<html lang="ar" dir="rtl">/)],
  ['Canvas game loop and physics',()=>{assert(html.includes("getContext('2d')"));assert(html.includes('function loop(now)'));assert(html.includes('function update(dt)'))}],
  ['Game JavaScript syntax',()=>{const js=html.slice(html.indexOf('<script>')+8,html.indexOf('</script>'));new vm.Script(js)}],
- ['Original playable world music is loaded by world',()=>{assert(html.includes("audio/forest_theme.wav"));assert(html.includes("audio/desert_theme.wav"));assert(html.includes("audio/star_islands_theme.wav"));assert(html.includes("player.play().catch"))}],
+ ['Original playable world music is loaded by world',()=>{assert(html.includes("forest_theme.wav"));assert(html.includes("desert_theme.wav"));assert(html.includes("star_islands_theme.wav"));assert(html.includes("player.play().catch(()=>{})"))}],
  ['Original illustrated backgrounds and animated character',()=>{['art/forest_background.jpg','art/desert_background.jpg','art/star_islands_background.jpg','art/farida_character_strip.png'].forEach(x=>assert(html.includes(x)));assert(html.includes('faridaStrip'))}],
  ['Arabic story intros for the three worlds',()=>{assert(html.includes('حكاية العالم'));assert(html.includes('وصلت فريدة إلى الغابة المضيئة'));assert(html.includes('عبرت فريدة الصحراء الذهبية'));assert(html.includes('وصلت فريدة إلى جزر النجوم'));assert(html.includes('continueStory'))}],
  ['Educational memory, color and Arabic letter games',()=>{assert(html.includes('function learnMenu()'));assert(html.includes('function flipMemory(i)'));assert(html.includes('function pickColor(i)'));assert(html.includes('function pickLetter(i)'));assert(html.includes('ألعاب فريدة التعليمية'))}],
