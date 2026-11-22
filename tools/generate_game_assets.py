@@ -117,7 +117,7 @@ def gradient_bg(name, top, bottom, accent, seed):
         for x,y0,r in [(260,760,180),(1040,810,230),(1740,750,200)]:
             d.ellipse((x-r,y0-r//2,x+r,y0+r//2),fill=(90,93,173,255))
             d.ellipse((x-r//2,y0-r//2-30,x+r//2,y0+r//2-30),fill=(124,117,205,230))
-    im=im.filter(ImageFilter.GaussianBlur(.35))
+    im=im.filter(ImageFilter.GaussianBlur(.35)).convert("RGB")
     im.save(ART/(name+"_background.jpg"),quality=94,optimize=True)
     print("created",ART/(name+"_background.jpg"))
 
