@@ -32,6 +32,7 @@ test('animal garden advances through educational animals', async ({ page }) => {
 });
 
 test('sound toggle updates its accessible label', async ({ page }) => {
+  await page.locator('#play').click();
   await page.locator('#sound').click();
   await expect(page.locator('#sound')).toHaveText('🔇');
   await page.locator('#sound').click();
