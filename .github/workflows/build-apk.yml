@@ -25,6 +25,8 @@ jobs:
         run: python -m pip install --disable-pip-version-check numpy pillow
       - name: Generate original game music and artwork
         run: python tools/generate_game_assets.py
+      - name: Sync the tested web game into Android assets
+        run: cp index.html app/src/main/assets/index.html
       - name: Verify generated assets are real and complete
         run: |
           set -euo pipefail
