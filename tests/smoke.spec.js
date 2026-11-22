@@ -37,3 +37,13 @@ test('sound toggle updates its accessible label', async ({ page }) => {
   await page.locator('#sound').click();
   await expect(page.locator('#sound')).toHaveText('🔊');
 });
+
+test('saved gems and stars survive a reload', async ({ page }) => {
+  await page.evaluate(() => {
+    localStorage.setItem('fwGems', '7');
+    localStorage.setItem('fwStars', '3');
+  });
+  await page.reload();
+  await expect(page.locator('#gems')).toHaveText('7');
+  await expect(page.locator('#stars')).toHaveText('3');
+});
