@@ -1,0 +1,27 @@
+{
+  "name": "عالم فريدة - Farida World",
+  "short_name": "عالم فريدة",
+  "description": "مغامرة فريدة بين الغابة والبحر والصحراء وجزر السحاب",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#111638",
+  "theme_color": "#171b48",
+  "icons": [
+    {
+      "src": "assets/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
