@@ -12,7 +12,7 @@ const checks=[
  ['Keyboard controls',()=>assert(html.includes('ArrowLeft')&&html.includes('keydown'))],
  ['Collectible gems and local persistence',()=>{assert(html.includes('function crystal'));assert(html.includes('earned++'));assert(html.includes("db.set('gems'"))}],
  ['Enemies, hazards and combat',()=>{assert(html.includes('function attack()'));assert(html.includes('function hurt()'));assert(html.includes('traps.forEach'))}],
- ['Level completion and star progression',()=>{assert(html.includes('function win()'));assert(html.includes("db.set('unlocked'"));assert(html.includes("db.set('stars'"))}],
+ ['Level completion and star progression',()=>{assert(html.includes('function win()'));assert(html.includes("['unlocked',unlocked]"));assert(html.includes("['stars',stars]"))}],
  ['Unlockable outfits and settings',()=>{assert(html.includes('function shop()'));assert(html.includes('function buy(i)'));assert(html.includes('function settings()'))}],
  ['Offline synthesized music and effects',()=>{assert(html.includes('AudioContext'));assert(html.includes('function audioOn()'));assert(html.includes('function fx(k)'))}],
  ['Android offline WebView',()=>{assert(activity.includes('file:///android_asset/index.html'));assert(manifest.includes('usesCleartextTraffic="false"'))}],
