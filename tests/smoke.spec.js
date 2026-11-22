@@ -1,0 +1,39 @@
+const { test, expect } = require('@playwright/test');
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('/');
+});
+
+test('Arabic home screen and all learning worlds render', async ({ page }) => {
+  await expect(page.getByRole('heading', { name: 'عالم فريدة' })).toBeVisible();
+  for (const name of ['الغابة السحرية', 'مملكة البحار', 'وادي الرمال', 'جزر السحاب', 'حديقة الحيوانات']) {
+    await expect(page.getByText(name, { exact: true })).toBeVisible();
+  }
+});
+
+test('forest starts and home returns to the world menu', async ({ page }) => {
+  await page.getByRole('button', { name: 'ابدئي المغامرة' }).click();
+  await expect(page.locator('#controls')).toBeVisible();
+  await page.locator('#home').click();
+  await expect(page.locator('#menu')).toBeVisible();
+});
+
+test('sea fishing responds to touch and keeps score bounded', async ({ page }) => {
+  await page.locator('[data-world="sea"]').click();
+  await expect(page.locator('#controls')).toBeVisible();
+  await expect(page.locator('#scene')).toBeVisible();
+});
+
+test('animal garden advances through educational animals', async ({ page }) => {
+  await page.locator('[data-world="learn"]').click();
+  await expect(page.locator('#controls')).toBeVisible();
+  await page.locator('#scene').click({ position: { x: 180, y: 220 } });
+  await expect(page.locator('#toast')).toContainText(/الفيل|الزرافة|القرد|الدلفين|البطريق|الأسد/);
+});
+
+test('sound toggle updates its accessible label', async ({ page }) => {
+  await page.locator('#sound').click();
+  await expect(page.locator('#sound')).toHaveText('🔇');
+  await page.locator('#sound').click();
+  await expect(page.locator('#sound')).toHaveText('🔊');
+});
