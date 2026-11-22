@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#171b48"><title>عالم فريدة | Farida World</title>
+<meta name="theme-color" content="#171b48"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>عالم فريدة | Farida World</title>
 <style>
 :root{--ink:#20234f;--pink:#ff6fae;--gold:#ffd66b;--glass:#ffffffdf}
 *{box-sizing:border-box}body{margin:0;background:#111638;color:white;font-family:system-ui,Tahoma,Arial;overflow:hidden;touch-action:manipulation}
@@ -62,6 +62,6 @@ else if(mode==='fish'){ctx.fillStyle='#0a5279';ctx.fillRect(0,H*.82,W,H*.18);fis
 requestAnimationFrame(draw)}
 function update(dt){t+=dt;if(mode==='run'){player.vx=(keys.right?1:0)-(keys.left?1:0);if(player.vx)player.face=Math.sign(player.vx);player.x=Math.max(25,Math.min(worldLength-25,player.x+player.vx*dt*.32));cameraX=Math.max(0,Math.min(worldLength-W,player.x-W*.38));player.vy+=dt*.0018;player.y+=player.vy*dt*.06;if(player.y>=groundY()-58){player.y=groundY()-58;player.vy=0;player.ground=true}items.forEach(it=>{if(!it.got&&Math.hypot(it.x-player.x,it.y-(player.y+20))<42){it.got=true;if(it.kind==='gem'){gems+=1;gemsEl.textContent=gems;localStorage.fwGems=gems;sound(990,.12)}else{stars++;starsEl.textContent=stars;localStorage.fwStars=stars;sound(760,.15)}score++;if(items.every(q=>q.got)){notify('رائع! أكملتِ العالم ⭐');stars+=2;starsEl.textContent=stars;localStorage.fwStars=stars;mode='menu';menu.classList.remove('hidden');controls.classList.add('hidden')}}})}else if(mode==='fish'){fish.forEach(f=>{f.x-=f.v*dt*.06;if(f.x< -45)f.x=W+45});timeLeft-=dt/1000;if(timeLeft<=0){timeLeft=60;mode='menu';menu.classList.remove('hidden');controls.classList.add('hidden');keys.left=keys.right=false;notify('انتهى وقت الجولة! رصيدك محفوظ، اختاري عالمًا جديدًا')}}}
 function loop(now){let dt=Math.min(40,now-last);last=now;update(dt);requestAnimationFrame(loop)}
-draw();requestAnimationFrame(loop);
+draw();requestAnimationFrame(loop);\nif('serviceWorker' in navigator && location.protocol!=='file:'){addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
 })();
 </script></body></html>
