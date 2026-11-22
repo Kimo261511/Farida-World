@@ -7,7 +7,7 @@ const gradle=fs.readFileSync(root+'/app/build.gradle','utf8');
 const checks=[
  ['Arabic right-to-left interface',()=>assert.match(html,/<html lang="ar" dir="rtl">/)],
  ['Canvas renderer and animation loop',()=>{assert(html.includes('<canvas id="scene"'));assert(html.includes('function draw('));assert(html.includes('function loop('))}],
- ['Five selectable game worlds',()=>{['الغابة السحرية','مملكة البحار','وادي الرمال','جزر السحاب','حديقة الحيوانات'].forEach(x=>assert(html.includes(x)));assert.strictEqual((html.match(/data-world=/g)||[]).length,5)}],
+ ['Five selectable game worlds',()=>{['الغابة السحرية','مملكة البحار','وادي الرمال','جزر السحاب','حديقة الحيوانات'].forEach(x=>assert(html.includes(x)));assert.strictEqual((html.match(/<button class="world" data-world=/g)||[]).length,5)}],
  ['Start and home navigation controls',()=>{['id="play"','id="home"','id="sound"'].forEach(x=>assert(html.includes(x)))}],
  ['Touch movement and jump controls',()=>{['id="left"','id="right"','id="jump"'].forEach(x=>assert(html.includes(x)))}],
  ['Local progress persistence',()=>{assert(html.includes('localStorage.fwGems'));assert(html.includes('localStorage.fwStars'))}],
