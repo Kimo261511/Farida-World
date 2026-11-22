@@ -14,7 +14,7 @@ button{font:inherit;border:0;cursor:pointer;color:#25234e;font-weight:900;border
 button:active{transform:translateY(3px);box-shadow:0 2px 0 #d58b36}
 .panel{position:absolute;z-index:4;inset:0;display:grid;place-items:center;padding:18px;background:#11163855;backdrop-filter:blur(5px)}
 .card{width:min(560px,94vw);max-height:90dvh;overflow:auto;text-align:center;color:var(--ink);padding:24px;border:4px solid white;border-radius:30px;background:linear-gradient(145deg,#fff,#fff0f6);box-shadow:0 20px 70px #11163870}
-h1{font-size:clamp(32px,7vw,56px);margin:4px 0;color:#ed559a;text-shadow:0 3px #ffd3e7}p{line-height:1.8}.sub{font-weight:700;color:#68709d}
+.cover{display:block;width:min(190px,48vw);aspect-ratio:1;object-fit:cover;border-radius:34px;margin:0 auto 10px;border:5px solid white;box-shadow:0 12px 28px #6b4c8b55}h1{font-size:clamp(32px,7vw,56px);margin:4px 0;color:#ed559a;text-shadow:0 3px #ffd3e7}p{line-height:1.8}.sub{font-weight:700;color:#68709d}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.world{min-height:104px;border:3px solid white;border-radius:22px;background:linear-gradient(145deg,#d9faff,#b8e8ff);box-shadow:0 5px 0 #8ebbd9;padding:12px;color:#25234e}.world b{display:block;font-size:19px}.world span{font-size:30px}
 #controls{position:absolute;z-index:3;bottom:20px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:end;pointer-events:none}
 .pad{display:flex;gap:12px;pointer-events:auto}.ctrl{width:64px;height:64px;border-radius:50%;padding:0;font-size:26px;background:linear-gradient(#fff,#dceaff);box-shadow:0 5px 0 #9db5d7}
@@ -26,7 +26,7 @@ h1{font-size:clamp(32px,7vw,56px);margin:4px 0;color:#ed559a;text-shadow:0 3px #
 <body><main id="game"><canvas id="scene"></canvas>
 <div class="hud"><div class="pill">🌸 فريدة</div><div class="pill">💎 <span id="gems">0</span></div><div class="pill">⭐ <span id="stars">0</span></div><button id="home" aria-label="القائمة">⌂</button><button id="sound" aria-label="الصوت">🔊</button></div>
 <div id="toast"></div>
-<div id="menu" class="panel"><section class="card"><div style="font-size:54px">👧🏻🌈✨</div><h1>عالم فريدة</h1><p class="sub">رحلة سحرية مليئة بالاكتشاف والمرح!</p><p>ساعدي فريدة في استكشاف العوالم، وجمع النجوم والبلورات، وفتح أسرار جديدة.</p><button id="play">ابدئي المغامرة ▶</button><div class="grid">
+<div id="menu" class="panel"><section class="card"><img class="cover" src="assets/farida-cover.svg" alt="غلاف عالم فريدة"><h1>عالم فريدة</h1><p class="sub">رحلة سحرية مليئة بالاكتشاف والمرح!</p><p>ساعدي فريدة في استكشاف العوالم، وجمع النجوم والبلورات، وفتح أسرار جديدة.</p><button id="play">ابدئي المغامرة ▶</button><div class="grid">
 <button class="world" data-world="forest"><span>🌳</span><b>الغابة السحرية</b><small>مغامرة وجمع النجوم</small></button>
 <button class="world" data-world="sea"><span>🐠</span><b>مملكة البحار</b><small>صيد السمك والكنوز</small></button>
 <button class="world" data-world="desert"><span>🏜️</span><b>وادي الرمال</b><small>قفز وتحديات</small></button>
