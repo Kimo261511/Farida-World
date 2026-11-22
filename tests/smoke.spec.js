@@ -26,7 +26,8 @@ test('sea fishing responds to touch and keeps score bounded', async ({ page }) =
 
 test('animal garden advances through educational animals', async ({ page }) => {
   await page.locator('[data-world="learn"]').click();
-  await expect(page.locator('#controls')).toBeVisible();
+  await expect(page.locator('#controls')).toBeHidden();
+  await expect(page.locator('#learnControls')).toBeVisible();
   await page.locator('#scene').click({ position: { x: 180, y: 220 } });
   await expect(page.locator('#toast')).toContainText(/الفيل|الزرافة|القرد|الدلفين|البطريق|الأسد/);
 });
@@ -47,4 +48,13 @@ test('saved gems and stars survive a reload', async ({ page }) => {
   await page.reload();
   await expect(page.locator('#gems')).toHaveText('7');
   await expect(page.locator('#stars')).toHaveText('3');
+});
+
+test('learning garden switches between animals, shapes, colors and Arabic letters', async ({ page }) => {
+  await page.locator('[data-world="learn"]').click();
+  for (const category of ['animals', 'shapes', 'colors', 'letters']) {
+    await page.locator('[data-learn="' + category + '"]').click();
+    await page.locator('#scene').click({ position: { x: 180, y: 220 } });
+    await expect(page.locator('#toast')).not.toBeEmpty();
+  }
 });
