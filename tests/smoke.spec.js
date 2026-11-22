@@ -12,7 +12,7 @@ test('Arabic home screen and all learning worlds render', async ({ page }) => {
 });
 
 test('forest starts and home returns to the world menu', async ({ page }) => {
-  await page.getByRole('button', { name: 'ابدئي المغامرة' }).click();
+  await page.locator('#play').click();
   await expect(page.locator('#controls')).toBeVisible();
   await page.locator('#home').click();
   await expect(page.locator('#menu')).toBeVisible();
