@@ -11,13 +11,33 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: ${{ env.JAVA_VERSION }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original asset generator dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow
+      - name: Generate original game music and artwork
+        run: python tools/generate_game_assets.py
+      - name: Verify generated assets are real and complete
+        run: |
+          set -euo pipefail
+          test -s app/src/main/assets/audio/forest_theme.wav
+          test -s app/src/main/assets/audio/desert_theme.wav
+          test -s app/src/main/assets/audio/star_islands_theme.wav
+          test -s app/src/main/assets/art/forest_background.jpg
+          test -s app/src/main/assets/art/desert_background.jpg
+          test -s app/src/main/assets/art/star_islands_background.jpg
+          test -s app/src/main/assets/art/farida_character_strip.png
+          AUDIO_BYTES=$(du -cb app/src/main/assets/audio/*.wav | tail -1 | cut -f1)
+          echo "Original soundtrack bytes: $AUDIO_BYTES"
+          test "$AUDIO_BYTES" -ge 115000000
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: ${{ env.GRADLE_VERSION }}
@@ -36,20 +56,23 @@ jobs:
           test "$SIZE" -ge 104857600
           unzip -t "$APK"
           unzip -l "$APK" | tee apk-contents.txt
+          for asset in assets/audio/forest_theme.wav assets/audio/desert_theme.wav assets/audio/star_islands_theme.wav assets/art/farida_character_strip.png; do
+            unzip -l "$APK" "$asset" | grep -q "$asset"
+          done
       - uses: actions/upload-artifact@v4
         with:
-          name: Farida-Adventures-4.0.0-APK
+          name: Farida-Adventures-4.1.0-APK
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
       - name: Publish APK release
         if: success()
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v4.0.0
-          name: مغامرات فريدة 4.0.0
+          tag_name: v4.1.0
+          name: مغامرات فريدة 4.1.0
           body: |
-            إصدار لا ينشر إلا بعد اجتياز اختبار سلامة APK وشرط الحجم الأدنى 100 MiB.
-            راجع GAME_DESIGN.md لمعرفة المحتوى ومعايير القبول.
+            ثلاثة مسارات موسيقية أصلية كاملة، خلفيات عوالم مرسومة، وشريط رسوم متحركة للشخصية.
+            ينشر الإصدار فقط بعد التحقق من وجود الأصول وبلوغ APK الحد الأدنى 100 MiB.
           files: app/build/outputs/apk/debug/app-debug.apk
           overwrite_files: true
           make_latest: true
