@@ -8,6 +8,7 @@ const checks=[
  ['Arabic right-to-left game shell',()=>assert.match(html,/<html lang="ar" dir="rtl">/)],
  ['Canvas-based 2D game engine',()=>{assert(html.includes("getContext('2d')"));assert(html.includes('function loop(now)'));assert(html.includes('function update(dt)'))}],
  ['Game JavaScript parses without syntax errors',()=>{const js=html.slice(html.indexOf('<script>')+8,html.indexOf('</script>'));assert(js.length>0);new vm.Script(js)}],
+ ['Fishing mini-game, touch catching and rewards',()=>{assert(html.includes('function fishing()'));assert(html.includes('function fishTap(e)'));assert(html.includes('اصطد 10 سمكات'));assert(html.includes('fishCaught*2'));assert(html.includes('F.fishing'))}],
  ['Three worlds and fifteen stages',()=>{['الغابة المضيئة','مملكة الرمال','جزر النجوم'].forEach(x=>assert(html.includes(x)));assert(html.includes('n<=unlocked'))}],
  ['Touch controls for movement, jump and attack',()=>['left','right','jump','hit'].forEach(x=>assert(html.includes('id="'+x+'"')))],
  ['Keyboard controls',()=>assert(html.includes('ArrowLeft')&&html.includes('keydown'))],
@@ -18,8 +19,8 @@ const checks=[
  ['Offline synthesized music and effects',()=>{assert(html.includes('AudioContext'));assert(html.includes('function audioOn()'));assert(html.includes('function fx(k)'))}],
  ['Android offline WebView',()=>{assert(activity.includes('file:///android_asset/index.html'));assert(manifest.includes('usesCleartextTraffic="false"'))}],
  ['No remote scripts or Internet permission',()=>{assert(!/<script[^>]+src=/.test(html));assert(!manifest.includes('android.permission.INTERNET'))}],
- ['Version 3.0.0',()=>{assert(gradle.includes("versionName '3.0.0'"));assert(gradle.includes('versionCode 7'))}],
- ['APK build enforces 100 MB maximum',()=>assert(fs.readFileSync(root+'/.github/workflows/build-apk.yml','utf8').includes('104857600'))]
+ ['Version 4.0.0 development line',()=>{assert(gradle.includes("versionName '4.0.0'"));assert(gradle.includes('versionCode 8'))}],
+ ['APK build enforces 100 MiB minimum',()=>{const w=fs.readFileSync(root+'/.github/workflows/build-apk.yml','utf8');assert(w.includes('104857600'));assert(w.includes('-ge 104857600'))}]
 ];
 let failed=0;for(const [name,fn] of checks){try{fn();console.log('PASS '+name)}catch(e){failed++;console.error('FAIL '+name+': '+e.message)}}
 console.log(checks.length-failed+'/'+checks.length+' checks passed');if(failed)process.exit(1);
