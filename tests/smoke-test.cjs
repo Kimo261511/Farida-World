@@ -6,7 +6,8 @@ const manifest=fs.readFileSync(root+'/app/src/main/AndroidManifest.xml','utf8');
 const checks=[
  ['Arabic right-to-left game shell',()=>assert.match(html,/<html lang="ar" dir="rtl">/)],
  ['All six activities exist',()=>['fishing','colors','memory','puzzle','learn','drawing'].forEach(x=>assert(html.includes('id="'+x+'"')))],
- ['Fishing interaction and score',()=>{assert(html.includes('function catchFish'));assert(html.includes('fishScore>=fishTarget'))}],\n ['Twenty progressive fishing levels',()=>{assert(html.includes('function renderLevels'));assert(html.includes('n<=20'));assert(html.includes('fishTarget=5+Math.floor'))}],
+ ['Fishing interaction and score',()=>{assert(html.includes('function catchFish'));assert(html.includes('fishScore>=fishTarget'))}],
+ ['Twenty progressive fishing levels',()=>{assert(html.includes('function renderLevels'));assert(html.includes('n<=20'));assert(html.includes('fishTarget=5+Math.floor'))}],
  ['Color matching game',()=>assert(html.includes('function nextColor'))],
  ['Six-pair memory game',()=>{assert(html.includes('const emojis='));assert(html.includes('memoryMatches===6'))}],
  ['Twenty learning puzzles',()=>assert((html.match(/\['/g)||[]).length>=20)],
