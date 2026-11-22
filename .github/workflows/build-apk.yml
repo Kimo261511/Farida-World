@@ -64,15 +64,3 @@ jobs:
           name: Farida-Adventures-4.1.0-APK
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
-      - name: Publish APK release
-        if: success()
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v4.1.0
-          name: مغامرات فريدة 4.1.0
-          body: |
-            ثلاثة مسارات موسيقية أصلية كاملة، خلفيات عوالم مرسومة، وشريط رسوم متحركة للشخصية.
-            ينشر الإصدار فقط بعد التحقق من وجود الأصول وبلوغ APK الحد الأدنى 100 MiB.
-          files: app/build/outputs/apk/debug/app-debug.apk
-          overwrite_files: true
-          make_latest: true
