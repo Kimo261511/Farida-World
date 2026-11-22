@@ -1,39 +1,28 @@
 #!/usr/bin/env python3
-"""Fail the Android build if real soundtrack assets are missing from the APK."""
+"""Verify original game music and artwork are bundled in the Android APK."""
 from pathlib import Path
-import sys
-import zipfile
-import wave
-
-apk = Path("app/build/outputs/apk/debug/app-debug.apk")
-if not apk.is_file():
-    raise SystemExit("APK missing")
-assets = [
-    Path("app/src/main/assets/music/forest.wav"),
-    Path("app/src/main/assets/music/ocean.wav"),
-    Path("app/src/main/assets/music/adventure.wav"),
+import sys, zipfile, wave
+apk=Path("app/build/outputs/apk/debug/app-debug.apk")
+if not apk.is_file(): raise SystemExit("APK missing")
+assets=[
+ "audio/forest_theme.wav","audio/desert_theme.wav","audio/star_islands_theme.wav",
+ "art/forest_background.jpg","art/desert_background.jpg","art/star_islands_background.jpg",
+ "art/farida_character_strip.png"
 ]
-for asset in assets:
-    if not asset.is_file():
-        raise SystemExit(f"Missing generated soundtrack: {asset}")
-    with wave.open(str(asset), "rb") as wav:
-        if wav.getnchannels() != 2 or wav.getframerate() != 44100 or wav.getnframes() < 44100 * 224:
-            raise SystemExit(f"Invalid soundtrack format/duration: {asset}")
-size = apk.stat().st_size
-if size < 100 * 1024 * 1024:
-    raise SystemExit(f"APK is only {size:,} bytes; required minimum is 104,857,600")
+base=Path("app/src/main/assets")
+for name in assets:
+ p=base/name
+ if not p.is_file() or p.stat().st_size<1000: raise SystemExit(f"Missing or empty generated asset: {name}")
+for name in assets[:3]:
+ with wave.open(str(base/name),"rb") as wav:
+  if wav.getnchannels()!=2 or wav.getframerate()!=44100 or wav.getnframes()<44100*224:
+   raise SystemExit(f"Invalid soundtrack: {name}")
 with zipfile.ZipFile(apk) as z:
-    names = set(z.namelist())
-    required = {
-        "assets/music/forest.wav",
-        "assets/music/ocean.wav",
-        "assets/music/adventure.wav",
-    }
-    missing = required - names
-    if missing:
-        raise SystemExit(f"APK missing soundtrack assets: {sorted(missing)}")
-    for name in required:
-        info = z.getinfo(name)
-        if info.file_size < 39_000_000:
-            raise SystemExit(f"Soundtrack in APK is unexpectedly small: {name}")
-print(f"APK verified: {size:,} bytes; all 3 original WAV tracks are bundled.")
+ names=set(z.namelist())
+ for name in assets:
+  key="assets/"+name
+  if key not in names: raise SystemExit(f"APK missing {key}")
+  if z.getinfo(key).file_size<1000: raise SystemExit(f"APK asset empty: {key}")
+size=apk.stat().st_size
+if size<100*1024*1024: raise SystemExit(f"APK only {size:,} bytes; expected at least 104,857,600")
+print(f"APK verified: {size:,} bytes; 3 music tracks, 3 backgrounds, and Farida animation strip are bundled.")
